@@ -10,6 +10,7 @@ const knex = require("./db/knex");
 const getAllFanfics = require("./db/fanfics/getAllFanfics");
 const getByAuthor = require("./db/fanfics/getByAuthor");
 const addFanf = require("./db/fanfics/addFanfic");
+const updateFanf = require("./db/fanfics/updateFanfic");
 
 //to parse incoming json
 app.use(bodyParser.json());
@@ -43,7 +44,15 @@ app.post("/fanfic", async (req, res) => {
   const newFanf = req.body;
   await addFanf(knex, newFanf);
   res.status(200).send(`Fanf was added successfully!`);
-})
+});
+
+//patch fanfic's URL
+app.patch("/:id", async (req, res) => {
+  const { id } = req.params;
+  const { fanfic_url } = req.body;
+  const patchedFanf = await updateFanf(knex, id, fanfic_url);
+  res.status(200).send(patchedFanf);
+});
 
 //listen to the port I set
 app.listen(port, () => {
