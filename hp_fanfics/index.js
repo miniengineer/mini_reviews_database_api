@@ -8,6 +8,7 @@ const knex = require("./db/knex");
 
 //importing knex query wrapper
 const getAllFanfics = require("./db/fanfics/getAllFanfics");
+const getByAuthor = require("./db/fanfics/getByAuthor");
 
 //to parse incoming json
 app.use(bodyParser.json());
@@ -27,7 +28,11 @@ app.get("/fanfics", async (req, res) => {
   res.status(200).send(allFanfics);
 });
 
-
+app.get("/:author", async (req, res) => {
+  const { author } = req.params;
+  const fanficsByAuthor = await getByAuthor(knex, author);
+  res.status(200).send(fanficsByAuthor);
+});
 
 //listen to the port I set
 app.listen(port, () => {
