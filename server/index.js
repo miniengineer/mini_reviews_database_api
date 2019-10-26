@@ -23,16 +23,25 @@ app.get("/", (req, res) => {
   res.json({ info: "NodeJS, Express and PostgresAPI" });
 });
 
+//get all fanfics
 app.get("/fanfics", async (req, res) => {
   const allFanfics = await getAllFanfics(knex);
   res.status(200).send(allFanfics);
 });
 
+
+//get fanfics by author
 app.get("/:author", async (req, res) => {
   const { author } = req.params;
   const fanficsByAuthor = await getByAuthor(knex, author);
   res.status(200).send(fanficsByAuthor);
 });
+
+//add new fanfics
+app.post("/fanfic", async (req, res) => {
+  const newFanf = req.body;
+  
+})
 
 //listen to the port I set
 app.listen(port, () => {
