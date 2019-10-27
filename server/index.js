@@ -22,6 +22,8 @@ app.use(
 );
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', "*");
+  res.header('Access-Control-Allow-Methods', "*");
   next();
 });
 
@@ -47,8 +49,8 @@ app.get("/:author", async (req, res) => {
 //add a new fanfic
 app.post("/fanfic", async (req, res) => {
   const newFanf = req.body;
-  await addFanf(knex, newFanf);
-  res.status(200).send(`Fanf was added successfully!`);
+  const addedFanf = await addFanf(knex, newFanf);
+  res.status(200).send(addedFanf);
 });
 
 //patch fanfic's URL
