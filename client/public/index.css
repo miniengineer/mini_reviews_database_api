@@ -18,9 +18,9 @@ div#container {
   text-align: center;
 }
 
-div.fanfic-container {
+ .fanfic-container {
   min-height: 100px;
-  width: 1000px;
+  width: 900px;
   margin: 0 auto;
   margin: 20px;
   padding-left: 40px;
@@ -31,6 +31,39 @@ div.fanfic-container {
   text-align: left;
 }
 
+.add-fanf-form {
+  min-height: 100px;
+  width: 900px;
+  margin: 0 auto;
+  margin-left: 60px;
+  padding: 40px;
+  background: white;
+  border-radius: 50px 0 0 50px;
+  border: #FFE7B6 solid 5px;
+  box-shadow: 4px 3px 7px 2px #00000040;
+  text-align: left;
+}
+
+.fanfic_input {
+  margin: 5px;
+  font-family: 'Courier New';
+  font-size: 16px;
+  outline: none;
+}
+
 ul {
   list-style: none;
+}
+
+
+.add-fanf-btn {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 6px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  border-radius: 10px;
 }

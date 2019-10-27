@@ -1,7 +1,6 @@
 import React from 'react';
 
 function FanficsList(props) {
-  console.log(props.fanfics);
   return props.fanfics.map((fanfic, i) => {
       return (<li key={i}>
        <div className='fanfic-container'>
