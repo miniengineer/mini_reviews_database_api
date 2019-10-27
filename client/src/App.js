@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      isLoading: true,
+      isLoading: false,
       fanfics: null,
       keywords: null
     };
@@ -23,11 +23,11 @@ class App extends React.Component {
       });
     });
 
-    setTimeout(() => {
-      this.setState({
-        isLoading: false
-      });
-    }, 3000);
+    // setTimeout(() => {
+    //   this.setState({
+    //     isLoading: false
+    //   });
+    // }, 500);
 
 
   }
@@ -42,7 +42,7 @@ class App extends React.Component {
           this.state.isLoading ? <img alt="loading_cat" src="loading_cat.gif"></img> : null
         }
         {
-          this.state.fanfics ? <FanficsList fanfics={this.state.fanfics} /> : null
+          this.state.fanfics ? <ul><FanficsList fanfics={this.state.fanfics} /></ul> : null
         }
       </div>
     );
