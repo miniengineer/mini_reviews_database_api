@@ -4,6 +4,12 @@ body {
   background-color: #77b2c9;
 }
 
+header {
+  text-align: center;
+  font-size: 1.4em;
+  margin-top: 20px;
+}
+
 div#container {
   min-height: 600px;
   width: 1100px;

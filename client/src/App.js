@@ -76,6 +76,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <header>Mini Fanfics Database</header>
         {
           this.state.isLoading ? <img alt="loading_cat" src="loading_cat.gif"></img> : null
         }
