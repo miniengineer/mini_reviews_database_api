@@ -86,13 +86,13 @@ class App extends React.Component {
             <ul><FanficsList fanfics={this.state.fanfics} onDelete={this.handleDelete} /></ul>
             <div className="add-fanf-form">
          <form>
-            <label>Title: <input name="title" value={this.state.title} type="text" className="fanfic_input" onChange={(event) => this.handleInputChange(event)}></input></label>
+            <label>Title: <input name="title" value={this.state.title} type="text" className="fanfic_input" autoComplete="off" onChange={(event) => this.handleInputChange(event)}></input></label>
             <br></br>
-            <label>Author: <input name="author" value={this.state.author} type="text" className="fanfic_input" onChange={(event) => this.handleInputChange(event)}></input></label>
+            <label>Author: <input name="author" value={this.state.author} type="text" className="fanfic_input" autoComplete="off" onChange={(event) => this.handleInputChange(event)}></input></label>
             <br></br>
-            <label>Genre: <input name="genre" value={this.state.genre} type="text" className="fanfic_input" onChange={(event) => this.handleInputChange(event)}></input></label>
+            <label>Genre: <input name="genre" value={this.state.genre} type="text" className="fanfic_input" autoComplete="off" onChange={(event) => this.handleInputChange(event)}></input></label>
             <br></br>
-            <label>URL: <input name="url" value={this.state.url} type="text" className="fanfic_input" onChange={(event) => this.handleInputChange(event)}></input></label>
+            <label>URL: <input name="url" value={this.state.url} type="text" className="fanfic_input" autoComplete="off" onChange={(event) => this.handleInputChange(event)}></input></label>
             <button className="add-fanf-btn" onClick={(event) => this.handleFormSubmit(event)}>Add Fanfic</button>
          </form>
         </div>
