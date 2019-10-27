@@ -31,6 +31,8 @@ DONE!
 
 # Demo
 
+!(Demo)[https://github.com/miniengineer/mini_hp_fanfiction_api/blob/master/Mini_hp_fanfics_demo.gif]
+
 # API endpoints
 
 **GET ./fanfics** - Get all fanfics
