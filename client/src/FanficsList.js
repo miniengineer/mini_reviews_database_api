@@ -7,6 +7,7 @@ function FanficsList(props) {
          <h3>Title: {fanfic.title}</h3>
          <h4>Author: {fanfic.author} <br></br> Genre: {fanfic.genre}</h4>
          <h4>URL: {fanfic.fanfic_url}</h4>
+         <h3><button onClick={() => props.onDelete(fanfic.id)}>Delete</button></h3>
        </div>
       </li>);
   });

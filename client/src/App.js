@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      isLoading: false,
+      isLoading: true,
       fanfics: null,
       keywords: null,
       title: null,
@@ -27,21 +27,30 @@ class App extends React.Component {
       });
     });
 
-    // setTimeout(() => {
-    //   this.setState({
-    //     isLoading: false
-    //   });
-    // }, 500);
-
-
+    setTimeout(() => {
+      this.setState({
+        isLoading: false
+      });
+    }, 2000);
   }
 
+  //save a new fanfic info
   handleInputChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
+  //delete fanfic from db and update the state
+  handleDelete = (id) => {
+    axios.delete(`http://localhost:3000/${id}`).then((response) => {
+      this.setState({
+        fanfics: response.data
+      });
+    });
+  }
+
+  //once new fanf submitted, send it to db and update the state
   handleFormSubmit = (event) => {
     event.preventDefault();
     const newFanf = {
@@ -71,9 +80,10 @@ class App extends React.Component {
           this.state.isLoading ? <img alt="loading_cat" src="loading_cat.gif"></img> : null
         }
         {
-          this.state.fanfics ? <ul><FanficsList fanfics={this.state.fanfics} /></ul> : null
-        }
-        <div className="add-fanf-form">
+          this.state.fanfics && !this.state.isLoading ?
+          <div>
+            <ul><FanficsList fanfics={this.state.fanfics} onDelete={this.handleDelete} /></ul>
+            <div className="add-fanf-form">
          <form>
             <label>Title: <input name="title" type="text" className="fanfic_input" onChange={(event) => this.handleInputChange(event)}></input></label>
             <br></br>
@@ -85,6 +95,9 @@ class App extends React.Component {
             <button className="add-fanf-btn" onClick={(event) => this.handleFormSubmit(event)}>Add Fanfic</button>
          </form>
         </div>
+          </div>
+           : null
+        }
       </div>
     );
   }
