@@ -20,6 +20,10 @@ app.use(
     extended: true,
   })
 );
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 //root for get request on the root URL
 app.get("/", (req, res) => {
