@@ -8,7 +8,7 @@ const knex = require("./db/knex");
 
 //importing knex query wrapper
 const getAllReviews = require("./db/reviews/getAllReviews");
-const getReviewByProduct = require("./db/reviews/getReviewByProduct");
+const getByProduct = require("./db/reviews/getByProduct");
 const addReview = require("./db/reviews/addReview");
 const updateReview = require("./db/reviews/updateReview");
 const deleteReview = require("./db/reviews/deleteReview");
@@ -42,6 +42,13 @@ app.get("/reviews", async (req, res) => {
 //get review by product
 app.get("/reviews/:product", async (req, res) => {
   const { product } = req.params;
+  const reviewsByProduct = await getByProduct(knex, product);
+  res.status(200).send(reviewsByProduct);
+});
+
+//get review by product with certain rating
+app.get("/reviews/:product/:rating", async (req, res) => {
+  const { product, rating } = req.params;
   const reviewsByProduct = await getReviewByProduct(knex, product);
   res.status(200).send(reviewsByProduct);
 });
