@@ -8,7 +8,7 @@ const knex = require("./db/knex");
 
 //importing knex query wrapper
 const getAllReviews = require("./db/reviews/getAllReviews");
-// const getByAuthor = require("./db/fanfics/getByAuthor");
+const getReviewByProduct = require("./db/reviews/getReviewByProduct");
 const addReview = require("./db/reviews/addReview");
 const updateReview = require("./db/reviews/updateReview");
 const deleteReview = require("./db/reviews/deleteReview");
@@ -39,12 +39,12 @@ app.get("/reviews", async (req, res) => {
 });
 
 
-// //get fanfics by author
-// app.get("/:author", async (req, res) => {
-//   const { author } = req.params;
-//   const fanficsByAuthor = await getByAuthor(knex, author);
-//   res.status(200).send(fanficsByAuthor);
-// });
+//get review by product
+app.get("/reviews/:product", async (req, res) => {
+  const { product } = req.params;
+  const reviewsByProduct = await getReviewByProduct(knex, product);
+  res.status(200).send(reviewsByProduct);
+});
 
 //add a new review
 app.post("/review", async (req, res) => {
