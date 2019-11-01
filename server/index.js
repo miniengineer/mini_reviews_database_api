@@ -11,7 +11,7 @@ const knex = require("./db/knex");
 // const getByAuthor = require("./db/fanfics/getByAuthor");
 const addReview = require("./db/reviews/addReview");
 // const updateFanf = require("./db/fanfics/updateFanfic");
-// const deleteFanf = require("./db/fanfics/deleteFanfic");
+const deleteReview = require("./db/reviews/deleteReview");
 
 //to parse incoming json
 app.use(bodyParser.json());
@@ -61,12 +61,12 @@ app.post("/review", async (req, res) => {
 //   res.status(200).send(patchedFanf);
 // });
 
-// //delete fanfic
-// app.delete("/:id", async (req, res) => {
-//   const { id } = req.params;
-//   const remainingFanfs = await deleteFanf(knex, id);
-//   res.status(200).send(remainingFanfs);
-// });
+//delete review
+app.delete("/review/:id", async (req, res) => {
+  const { id } = req.params;
+  const remainingReviews = await deleteReview(knex, id);
+  res.status(200).send(remainingReviews);
+});
 
 //listen to the port I set
 app.listen(port, () => {
