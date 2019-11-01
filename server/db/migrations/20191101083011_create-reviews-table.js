@@ -10,7 +10,7 @@ exports.up = function(knex) {
 
     table.text('review_text').index().notNullable(); //actual review
 
-    table.string('rating').index(); //rating of the product
+    table.integer('rating').index(); //rating of the product
 
     table.timestamp('created_at').defaultTo(knex.fn.now()); //review date
   });
