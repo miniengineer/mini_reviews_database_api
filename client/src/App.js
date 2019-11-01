@@ -31,7 +31,7 @@ class App extends React.Component {
       this.setState({
         isLoading: false
       });
-    }, 2000);
+    }, 4000);
   }
 
   //save a new fanfic info
