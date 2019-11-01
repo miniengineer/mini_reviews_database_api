@@ -1,3 +1,3 @@
 module.exports = (knex) => {
-  return knex("fanfics").select();
+  return knex('reviews').select();
 }

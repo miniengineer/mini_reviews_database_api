@@ -7,7 +7,7 @@ const port = 3000;
 const knex = require("./db/knex");
 
 //importing knex query wrapper
-// const getAllFanfics = require("./db/fanfics/getAllFanfics");
+const getAllReviews = require("./db/reviews/getAllReviews");
 // const getByAuthor = require("./db/fanfics/getByAuthor");
 const addReview = require("./db/reviews/addReview");
 // const updateFanf = require("./db/fanfics/updateFanfic");
@@ -32,11 +32,11 @@ app.get("/", (req, res) => {
   res.json({ info: "NodeJS, Express and PostgresAPI" });
 });
 
-// //get all fanfics
-// app.get("/fanfics", async (req, res) => {
-//   const allFanfics = await getAllFanfics(knex);
-//   res.status(200).send(allFanfics);
-// });
+//get all reviews
+app.get("/reviews", async (req, res) => {
+  const allReviews = await getAllReviews(knex);
+  res.status(200).send(allReviews);
+});
 
 
 // //get fanfics by author
