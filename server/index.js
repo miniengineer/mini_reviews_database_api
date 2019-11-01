@@ -10,7 +10,7 @@ const knex = require("./db/knex");
 const getAllReviews = require("./db/reviews/getAllReviews");
 // const getByAuthor = require("./db/fanfics/getByAuthor");
 const addReview = require("./db/reviews/addReview");
-// const updateFanf = require("./db/fanfics/updateFanfic");
+const updateReview = require("./db/reviews/updateReview");
 const deleteReview = require("./db/reviews/deleteReview");
 
 //to parse incoming json
@@ -53,13 +53,13 @@ app.post("/review", async (req, res) => {
   res.status(200).send(updatedState);
 });
 
-// //patch fanfic's URL
-// app.patch("/:id", async (req, res) => {
-//   const { id } = req.params;
-//   const { fanfic_url } = req.body;
-//   const patchedFanf = await updateFanf(knex, id, fanfic_url);
-//   res.status(200).send(patchedFanf);
-// });
+//patch review's title, text, rating
+app.patch("/review/:id", async (req, res) => {
+  const { id } = req.params;
+  const { review_title, review_text, rating } = req.body;
+  const patchedReview = await updateReview(knex, id, review_title, review_text, rating);
+  res.status(200).send(patchedReview);
+});
 
 //delete review
 app.delete("/review/:id", async (req, res) => {
