@@ -4,7 +4,7 @@ exports.up = function(knex) {
 
     table.string('name').index().notNullable(); //reviewer's name
 
-    table.string('reviewTitle').index().notNullable(); //title of the review
+    table.string('review_title').index().notNullable(); //title of the review
 
     table.string('product').index().notNullable(); //product being reviewed
 
