@@ -1,13 +1,18 @@
-# Mini Harry Potter Fanfiction API
+# Mini Reviews Database
 
 This weekend solo project was created during my time as a student at Code Chrysalis.
 
 # About
 
-Simple mini fanfiction database, where you can create, retrieve, update and delete fanfics.
+Simple mini reviews database, where you can create, retrieve, update and delete reviews.
 Enjoy using it ^^
 
 # Getting started
+
+For this API you will need to have PostgreSQl installed on your machine.
+You can do it from [here](https://www.postgresql.org/download/).
+
+The default name of the database is `reviews`. Please edit the database configuration file in case you want to name it differently.
 
 To run the app:
 
@@ -35,11 +40,11 @@ DONE!
 
 # API endpoints
 
-**GET ./fanfics** - Get all fanfics
+**GET ./reviews** - Get all reviews
 
-**POST ./fanfic** - Add a new fanfic
+**POST ./review** - Add a new review
 
-**PATCH ./:id** - Update a fanfic
+**PATCH ./review/:id** - Edit a review
 
-**DELETE ./:id** - Delete a fanfic
+**DELETE ./review/:id** - Delete a review
 
