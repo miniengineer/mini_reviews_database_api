@@ -12,6 +12,7 @@ const getByProduct = require("./db/reviews/getByProduct");
 const addReview = require("./db/reviews/addReview");
 const updateReview = require("./db/reviews/updateReview");
 const deleteReview = require("./db/reviews/deleteReview");
+const getByProductAndRating = require("./db/reviews/getByProductAndRating");
 
 //to parse incoming json
 app.use(bodyParser.json());
@@ -49,8 +50,8 @@ app.get("/reviews/:product", async (req, res) => {
 //get review by product with certain rating
 app.get("/reviews/:product/:rating", async (req, res) => {
   const { product, rating } = req.params;
-  const reviewsByProduct = await getReviewByProduct(knex, product);
-  res.status(200).send(reviewsByProduct);
+  const reviewsByProductAndRating = await getByProductAndRating(knex, product, rating);
+  res.status(200).send(reviewsByProductAndRating);
 });
 
 //add a new review

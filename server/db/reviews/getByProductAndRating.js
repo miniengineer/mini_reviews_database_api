@@ -1,4 +1,3 @@
-module.exports = (knex, data) => {
-  return knex('reviews').
-  //TODO implement getting review by product and rating
+module.exports = (knex, product, rating) => {
+  return knex('reviews').where({ product, rating }).select();
 };
