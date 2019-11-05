@@ -37,7 +37,7 @@ class App extends React.Component {
   //save a new review info
   handleInputChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value.trim()
+      [event.target.name]: event.target.value
     });
   }
 
@@ -52,19 +52,16 @@ class App extends React.Component {
 
   //once new review is submitted, send it to db and update the state
   handleFormSubmit = (event) => {
-    console.log("I am firing");
     event.preventDefault();
     const newReview = {
-      review_title: this.state.title,
-      name: this.state.author,
-      product: this.state.product,
-      review_text: this.state.text,
+      review_title: this.state.title.trim(),
+      name: this.state.author.trim(),
+      product: this.state.product.trim(),
+      review_text: this.state.text.trim(),
       rating: Number(this.state.rating)
     };
-    console.log(newReview);
 
     axios.post("http://localhost:3000/review", newReview).then((response) => {
-      console.log("I am firing");
       const addedReview = [...this.state.reviews, ...response.data];
       this.setState({
         reviews: addedReview,
