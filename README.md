@@ -10,7 +10,7 @@ Enjoy using it ^^
 # Getting started
 
 For this API you will need to have PostgreSQl installed on your machine.
-You can do it [here](https://www.postgresql.org/download/).
+You can do it from [here](https://www.postgresql.org/download/).
 
 The default name of the database is `reviews`. Please edit the database configuration file in case you want to name it differently.
 
