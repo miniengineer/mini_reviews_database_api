@@ -71,7 +71,8 @@ class App extends React.Component {
         title: "",
         author: "",
         text: "",
-        rating: ""
+        rating: "",
+        product: ""
       });
     });
   }
@@ -96,7 +97,7 @@ class App extends React.Component {
             <br></br>
             <label>Title: <input name="title" value={this.state.title} type="text" className="review_input" autoComplete="off" onChange={(event) => this.handleInputChange(event)}></input></label>
             <br></br>
-            <label>Review: <input name="text" value={this.state.text} type="text" className="review_input" autoComplete="off" onChange={(event) => this.handleInputChange(event)}></input></label>
+            <label>Review: <input name="text" value={this.state.text} type="text" className="review_input" onChange={(event) => this.handleInputChange(event)}></input></label>
             <br></br>
             <label>Rating: <input name="rating" value={this.state.rating} type="text" className="review_input" autoComplete="off" onChange={(event) => this.handleInputChange(event)}></input></label>
             <button className="add-review-btn" onClick={(event) => this.handleFormSubmit(event)}>Submit</button>
