@@ -18,6 +18,7 @@ class App extends React.Component {
 
     //get all reviews from DB
     axios.get("http://localhost:3000/reviews").then(reviews => {
+      console.log(reviews);
       let reviewsArray = [];
       for(const review of reviews.data) {
         reviewsArray.push(review);
@@ -54,15 +55,15 @@ class App extends React.Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     const newReview = {
-      review_title: this.state.title.trim(),
-      name: this.state.author.trim(),
-      product: this.state.product.trim(),
-      review_text: this.state.text.trim(),
+      review_title: this.state.title,
+      name: this.state.author,
+      product: this.state.product,
+      review_text: this.state.text,
       rating: Number(this.state.rating)
     };
 
     axios.post("http://localhost:3000/review", newReview).then((response) => {
-      const addedReview = [...this.state.reviews, ...response.data];
+      const addedReview = [...response.data];
       this.setState({
         reviews: addedReview,
         title: "",
