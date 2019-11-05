@@ -36,7 +36,7 @@ DONE!
 
 # Demo
 
-!(Demo)[https://github.com/miniengineer/mini_reviews_database_api/blob/master/mini_database_demo.gif]
+![Demo](https://github.com/miniengineer/mini_reviews_database_api/blob/master/mini_database_demo.gif)
 
 # API endpoints
 
