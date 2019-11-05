@@ -1,5 +1,5 @@
 import React from 'react';
-import FanficsList from './FanficsList';
+import ReviewsList from './ReviewsList';
 import axios from 'axios';
 
 
@@ -8,22 +8,22 @@ class App extends React.Component {
     super();
     this.state = {
       isLoading: true,
-      fanfics: null,
-      keywords: null,
+      reviews: null,
       title: "",
       author: "",
-      genre: "",
-      url: ""
+      rating: "",
+      product: "",
+      text: ""
     };
 
-    //get all fanfics from DB
-    axios.get("http://localhost:3000/fanfics").then(fanfics => {
-      let fanficsArray = [];
-      for(const fanfic of fanfics.data) {
-        fanficsArray.push(fanfic);
+    //get all reviews from DB
+    axios.get("http://localhost:3000/reviews").then(reviews => {
+      let reviewsArray = [];
+      for(const review of reviews.data) {
+        reviewsArray.push(review);
       }
       this.setState({
-        fanfics: fanficsArray
+        reviews: reviewsArray
       });
     });
 
@@ -34,40 +34,44 @@ class App extends React.Component {
     }, 4000);
   }
 
-  //save a new fanfic info
+  //save a new review info
   handleInputChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value.trim()
     });
   }
 
-  //delete fanfic from db and update the state
+  //delete review from db and update the state
   handleDelete = (id) => {
-    axios.delete(`http://localhost:3000/${id}`).then((response) => {
+    axios.delete(`http://localhost:3000/review/${id}`).then((response) => {
       this.setState({
-        fanfics: response.data
+        reviews: response.data
       });
     });
   }
 
-  //once new fanf submitted, send it to db and update the state
+  //once new review is submitted, send it to db and update the state
   handleFormSubmit = (event) => {
+    console.log("I am firing");
     event.preventDefault();
-    const newFanf = {
-      title: this.state.title,
-      author: this.state.author,
-      genre: this.state.genre,
-      fanfic_url: this.state.url
-    }
+    const newReview = {
+      review_title: this.state.title,
+      name: this.state.author,
+      product: this.state.product,
+      review_text: this.state.text,
+      rating: Number(this.state.rating)
+    };
+    console.log(newReview);
 
-    axios.post("http://localhost:3000/fanfic", newFanf).then((response) => {
-      const addedFanf = [...this.state.fanfics, ...response.data];
+    axios.post("http://localhost:3000/review", newReview).then((response) => {
+      console.log("I am firing");
+      const addedReview = [...this.state.reviews, ...response.data];
       this.setState({
-        fanfics: addedFanf,
+        reviews: addedReview,
         title: "",
         author: "",
-        genre: "",
-        url: ""
+        text: "",
+        rating: ""
       });
     });
   }
@@ -76,24 +80,26 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <header>Mini Fanfics Database</header>
+        <header>Mini Reviews Database</header>
         {
           this.state.isLoading ? <img alt="loading_cat" src="loading_cat.gif"></img> : null
         }
         {
-          this.state.fanfics && !this.state.isLoading ?
+          this.state.reviews && !this.state.isLoading ?
           <div>
-            <ul><FanficsList fanfics={this.state.fanfics} onDelete={this.handleDelete} /></ul>
-            <div className="add-fanf-form">
+            <ul><ReviewsList reviews={this.state.reviews} onDelete={this.handleDelete} /></ul>
+            <div className="add-review-form">
          <form>
-            <label>Title: <input name="title" value={this.state.title} type="text" className="fanfic_input" autoComplete="off" onChange={(event) => this.handleInputChange(event)}></input></label>
+            <label>Author: <input name="author" value={this.state.author} type="text" className="review_input" autoComplete="off" onChange={(event) => this.handleInputChange(event)}></input></label>
             <br></br>
-            <label>Author: <input name="author" value={this.state.author} type="text" className="fanfic_input" autoComplete="off" onChange={(event) => this.handleInputChange(event)}></input></label>
+            <label>Product: <input name="product" value={this.state.product} type="text" className="review_input" autoComplete="off" onChange={(event) => this.handleInputChange(event)}></input></label>
             <br></br>
-            <label>Genre: <input name="genre" value={this.state.genre} type="text" className="fanfic_input" autoComplete="off" onChange={(event) => this.handleInputChange(event)}></input></label>
+            <label>Title: <input name="title" value={this.state.title} type="text" className="review_input" autoComplete="off" onChange={(event) => this.handleInputChange(event)}></input></label>
             <br></br>
-            <label>URL: <input name="url" value={this.state.url} type="text" className="fanfic_input" autoComplete="off" onChange={(event) => this.handleInputChange(event)}></input></label>
-            <button className="add-fanf-btn" onClick={(event) => this.handleFormSubmit(event)}>Add Fanfic</button>
+            <label>Review: <input name="text" value={this.state.text} type="text" className="review_input" autoComplete="off" onChange={(event) => this.handleInputChange(event)}></input></label>
+            <br></br>
+            <label>Rating: <input name="rating" value={this.state.rating} type="text" className="review_input" autoComplete="off" onChange={(event) => this.handleInputChange(event)}></input></label>
+            <button className="add-review-btn" onClick={(event) => this.handleFormSubmit(event)}>Submit</button>
          </form>
         </div>
           </div>
