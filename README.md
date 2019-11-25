@@ -4,7 +4,7 @@ This solo project was created during my time as a student at Code Chrysalis.
 
 # About
 
-Simple mini reviews database, where you can create, retrieve, update and delete reviews.
+Simple reviews application that lets you to create, retrieve, update and delete reviews.
 Enjoy using it ^^
 
 # Getting started
@@ -16,23 +16,26 @@ The default name of the database is `reviews`. Please edit the database configur
 
 To run the app:
 
-### Step 1. Set up the server side
-
-1. navigate to the server folder `cd server`
-
-2. install dependencies `npm i`
-
-3. launch the server `npx nodemon`
-
-### Step 2. Set up the client side
+### Step 1. Set up the client side
 
 1. navigate to the client folder `cd client`
 
 2. install dependencies `yarn`
 
-3. launch the client `yarn start`
+3. create a production build `yarn build`
 
-DONE!
+3. launch ONLY the client `yarn start`
+
+### Step 2. Set up the server side
+
+1. navigate to the server folder `cd server`
+
+2. install dependencies `npm i`
+
+3. launch the server `npm start`
+
+
+DONE! Now you can see your reviews application running on http://localhost:4000
 
 # Demo
 
