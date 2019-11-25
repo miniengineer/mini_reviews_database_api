@@ -1,6 +1,6 @@
 # Mini Reviews Database
 
-This weekend solo project was created during my time as a student at Code Chrysalis.
+This solo project was created during my time as a student at Code Chrysalis.
 
 # About
 
@@ -36,7 +36,7 @@ DONE!
 
 # Demo
 
-!(Demo)[https://github.com/miniengineer/mini_hp_fanfiction_api/blob/master/Mini_hp_fanfics_demo.gif]
+![Demo](https://github.com/miniengineer/mini_reviews_database_api/blob/master/mini_database_demo.gif)
 
 # API endpoints
 
