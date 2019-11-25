@@ -10,7 +10,7 @@ app.listen(port, () => {
 });
 
 //path to the build folder
-app.use(express.static(path.join(__dirname, "../client", "build")));
+app.use(express.static(path.join(__dirname, "..", "build")));
 
 //to parse incoming json
 app.use(bodyParser.json());

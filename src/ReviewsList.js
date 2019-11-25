@@ -8,7 +8,14 @@ function ReviewsList(props) {
          <h4>Title: {review.review_title} <br></br> Product: {review.product}</h4>
          <p>{review.review_text}</p>
          <p>Rating: {review.rating}</p>
-         <p>date: {review.created_at} </p>
+         <p>date: {new Date(review.created_at).toLocaleDateString(
+             "en-US",
+             {
+                month: "short",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric"
+              })} </p>
          <h3><button className="delete-review-btn" onClick={() => props.onDelete(review.id)}>Delete</button></h3>
        </div>
       </li>);

@@ -17,7 +17,7 @@ class App extends React.Component {
     };
 
     //get all reviews from DB
-    axios.get("http://localhost:3000/reviews").then(reviews => {
+    axios.get("/reviews").then(reviews => {
       console.log(reviews);
       let reviewsArray = [];
       for(const review of reviews.data) {
@@ -44,7 +44,7 @@ class App extends React.Component {
 
   //delete review from db and update the state
   handleDelete = (id) => {
-    axios.delete(`http://localhost:3000/review/${id}`).then((response) => {
+    axios.delete(`/review/${id}`).then((response) => {
       this.setState({
         reviews: response.data
       });
@@ -62,7 +62,7 @@ class App extends React.Component {
       rating: Number(this.state.rating)
     };
 
-    axios.post("http://localhost:3000/review", newReview).then((response) => {
+    axios.post("/review", newReview).then((response) => {
       const addedReview = [...response.data];
       this.setState({
         reviews: addedReview,
