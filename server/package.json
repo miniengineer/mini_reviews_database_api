@@ -11,7 +11,8 @@
   },
   "scripts": {
     "migrate": "knex migrate:latest",
-    "rollback": "knex migrate:rollback"
+    "rollback": "knex migrate:rollback",
+    "start": "node index.js"
   },
   "browserslist": {
     "production": [

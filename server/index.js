@@ -1,18 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 4000;
+const path = require("path");
 
-//importing knex instanse
-const knex = require("./db/knex");
+//listen to the port I set
+app.listen(port, () => {
+  console.log(`App running at ${port}`);
+});
 
-//importing knex query wrapper
-const getAllReviews = require("./db/reviews/getAllReviews");
-const getByProduct = require("./db/reviews/getByProduct");
-const addReview = require("./db/reviews/addReview");
-const updateReview = require("./db/reviews/updateReview");
-const deleteReview = require("./db/reviews/deleteReview");
-const getByProductAndRating = require("./db/reviews/getByProductAndRating");
+//path to the build folder
+app.use(express.static(path.join(__dirname, "../client", "build")));
 
 //to parse incoming json
 app.use(bodyParser.json());
@@ -27,6 +25,17 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Methods', "*");
   next();
 });
+
+//importing knex instanse
+const knex = require("./db/knex");
+
+//importing knex query wrapper
+const getAllReviews = require("./db/reviews/getAllReviews");
+const getByProduct = require("./db/reviews/getByProduct");
+const addReview = require("./db/reviews/addReview");
+const updateReview = require("./db/reviews/updateReview");
+const deleteReview = require("./db/reviews/deleteReview");
+const getByProductAndRating = require("./db/reviews/getByProductAndRating");
 
 //root for get request on the root URL
 app.get("/", (req, res) => {
@@ -76,7 +85,4 @@ app.delete("/review/:id", async (req, res) => {
   res.status(200).send(remainingReviews);
 });
 
-//listen to the port I set
-app.listen(port, () => {
-  console.log(`App running at ${port}`);
-});
+
