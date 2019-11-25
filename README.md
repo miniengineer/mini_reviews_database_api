@@ -39,7 +39,7 @@ DONE! Now you can see your reviews application running on http://localhost:4000
 
 # Demo
 
-![Demo](https://github.com/miniengineer/mini_reviews_database_api/blob/master/mini_database_demo.gif)
+![Demo](https://github.com/miniengineer/mini_reviews_database_api/blob/master/public/reviews_demo.gif)
 
 # API endpoints
 
